@@ -12,8 +12,7 @@ class FruitHubApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: AppRouter.router,
-      title: 'Fruit Hub',
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
     );
   }
 }

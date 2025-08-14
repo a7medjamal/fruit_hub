@@ -5,15 +5,15 @@ import 'package:fruit_hub/core/utils/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SplashViewBody extends StatelessWidget {
-  const SplashViewBody({super.key});
+class Splash2ViewBody extends StatelessWidget {
+  const Splash2ViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onHorizontalDragEnd: (details) {
-        if (details.primaryVelocity != null && details.primaryVelocity! < 0) {
-          context.pushReplacement(AppRouter.kSplash2View);
+        if (details.primaryVelocity != null && details.primaryVelocity! > 0) {
+          context.pushReplacement(AppRouter.kSplashView);
         }
       },
       child: Center(
@@ -25,11 +25,7 @@ class SplashViewBody extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: SvgPicture.asset(
-                    'assets/images/splash_1.svg',
-                    colorFilter: ColorFilter.mode(
-                      Color.fromARGB(255, 244, 231, 209),
-                      BlendMode.srcIn,
-                    ),
+                    'assets/images/splash_2.svg',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -37,7 +33,7 @@ class SplashViewBody extends StatelessWidget {
                   top: 160,
                   left: 50,
                   child: SvgPicture.asset(
-                    'assets/images/first_splash_logo.svg',
+                    'assets/images/second_splash_logo.svg',
                   ),
                 ),
               ],
@@ -50,25 +46,7 @@ class SplashViewBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Fruit",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.green[900],
-                        fontFamily: GoogleFonts.cairo().fontFamily,
-                      ),
-                    ),
-                    Text(
-                      "HUB",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.yellow[900],
-                        fontFamily: GoogleFonts.cairo().fontFamily,
-                      ),
-                    ),
-                    Text(
-                      " مرحبًا بك في",
+                      "ابحث وتسوق",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -85,7 +63,7 @@ class SplashViewBody extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف \nمجموعتنا الواسعة من الفواكه الطازجة الممتازة\n واحصل على أفضل العروض والجودة العالية.",
+                        "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على\n التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة\n المثالية",
                         maxLines: 3,
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.center,
@@ -104,13 +82,33 @@ class SplashViewBody extends StatelessWidget {
             const SizedBox(height: 30),
             DotsIndicator(
               dotsCount: 2,
-              position: 0,
+              position: 1,
               decorator: DotsDecorator(
                 activeColor: Colors.green[900],
-                color: Colors.green[500]!,
+                color: Colors.green[900]!,
                 size: const Size(12, 12),
                 activeSize: const Size(12, 12),
                 spacing: const EdgeInsets.symmetric(horizontal: 4),
+              ),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green[900],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                minimumSize: const Size(343, 50),
+              ),
+              child: Text(
+                "ابدأ الان",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontFamily: GoogleFonts.cairo().fontFamily,
+                ),
               ),
             ),
           ],
