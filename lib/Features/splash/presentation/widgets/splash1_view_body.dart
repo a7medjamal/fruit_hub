@@ -1,7 +1,7 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fruit_hub/Features/splash/presentation/widgets/svg_clipper.dart';
+import 'package:fruit_hub/Features/splash/presentation/widgets/custom_background_decoration.dart';
+import 'package:fruit_hub/Features/splash/presentation/widgets/custom_dots_indicator.dart';
+import 'package:fruit_hub/Features/splash/presentation/widgets/splash_text_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Splash1ViewBody extends StatelessWidget {
@@ -15,21 +15,9 @@ class Splash1ViewBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Stack(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: size.height * 0.5,
-              child: SvgClip(),
-            ),
-            Positioned(
-              top: size.height * 0.17,
-              left: size.width * 0.23,
-              right: size.width * 0.23,
-              bottom: size.height * 0.5 * 0.04,
-              child: SvgPicture.asset('assets/images/first_splash_logo.svg'),
-            ),
-          ],
+        CustomBackgroundDecoration(
+          size: size,
+          imagePath: 'assets/images/first_splash_logo.svg',
         ),
         const SizedBox(height: 60),
         Row(
@@ -66,33 +54,15 @@ class Splash1ViewBody extends StatelessWidget {
           ],
         ),
         SizedBox(height: size.height * 0.05),
-        SizedBox(
-          width: 301,
-          height: 66,
-          child: Text(
-            "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف \nمجموعتنا الواسعة من الفواكه الطازجة الممتازة\n واحصل على أفضل العروض والجودة العالية.",
-            maxLines: 3,
-            textDirection: TextDirection.rtl,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 13,
-              color: const Color(0xff4E5556),
-              fontWeight: FontWeight.w600,
-              fontFamily: GoogleFonts.cairo().fontFamily,
-            ),
-          ),
+        SplashText(
+          text:
+              "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف \nمجموعتنا الواسعة من الفواكه الطازجة الممتازة\n واحصل على أفضل العروض والجودة العالية.",
         ),
         const SizedBox(height: 40),
-        DotsIndicator(
-          dotsCount: 2,
-          position: currentPage,
-          decorator: DotsDecorator(
-            activeColor: Colors.green[900],
-            color: Colors.green[500]!,
-            size: const Size(12, 12),
-            activeSize: const Size(12, 12),
-            spacing: const EdgeInsets.symmetric(horizontal: 4),
-          ),
+        CustomDotsIndicator(
+          currentPage: currentPage,
+          activeColor: Colors.green[900]!,
+          color: Colors.green[500]!,
         ),
       ],
     );
