@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hub/Features/splash/presentation/widgets/svg_clipper.dart';
 import 'package:fruit_hub/core/utils/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity != null && details.primaryVelocity! < 0) {
@@ -24,18 +26,13 @@ class SplashViewBody extends StatelessWidget {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  child: SvgPicture.asset(
-                    'assets/images/splash_1.svg',
-                    colorFilter: ColorFilter.mode(
-                      Color.fromARGB(255, 244, 231, 209),
-                      BlendMode.srcIn,
-                    ),
-                    fit: BoxFit.cover,
-                  ),
+                  height: size.height * 0.5,
+                  child: SvgClip(),
                 ),
                 Positioned(
-                  top: 160,
-                  left: 50,
+                  top: size.height * 0.17,
+                  left: size.width * 0.23,
+                  right: size.width * 0.23,
                   child: SvgPicture.asset(
                     'assets/images/first_splash_logo.svg',
                   ),
@@ -49,22 +46,23 @@ class SplashViewBody extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Fruit",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.green[900],
-                        fontFamily: GoogleFonts.cairo().fontFamily,
-                      ),
-                    ),
-                    Text(
-                      "HUB",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.yellow[900],
-                        fontFamily: GoogleFonts.cairo().fontFamily,
+                    Text.rich(
+                      TextSpan(
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: GoogleFonts.cairo().fontFamily,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Fruit",
+                            style: TextStyle(color: Colors.green[900]),
+                          ),
+                          TextSpan(
+                            text: "HUB",
+                            style: TextStyle(color: Colors.yellow[900]),
+                          ),
+                        ],
                       ),
                     ),
                     Text(
@@ -78,7 +76,7 @@ class SplashViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                SizedBox(height: size.height * 0.05),
                 SizedBox(
                   width: 301,
                   height: 66,
@@ -101,7 +99,7 @@ class SplashViewBody extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 64),
             DotsIndicator(
               dotsCount: 2,
               position: 0,

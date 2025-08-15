@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hub/Features/splash/presentation/widgets/svg_clipper.dart';
 import 'package:fruit_hub/core/utils/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ class Splash2ViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity != null && details.primaryVelocity! > 0) {
@@ -24,14 +26,13 @@ class Splash2ViewBody extends StatelessWidget {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  child: SvgPicture.asset(
-                    'assets/images/splash_2.svg',
-                    fit: BoxFit.cover,
-                  ),
+                  height: size.height * 0.5,
+                  child: SvgClip(),
                 ),
                 Positioned(
-                  top: 160,
-                  left: 50,
+                  top: size.height * 0.17,
+                  left: size.width * 0.23,
+                  right: size.width * 0.23,
                   child: SvgPicture.asset(
                     'assets/images/second_splash_logo.svg',
                   ),
@@ -56,7 +57,7 @@ class Splash2ViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 64),
                 SizedBox(
                   width: 301,
                   height: 66,
@@ -79,7 +80,7 @@ class Splash2ViewBody extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: size.height * 0.05),
             DotsIndicator(
               dotsCount: 2,
               position: 1,
