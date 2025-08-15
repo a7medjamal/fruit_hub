@@ -4,9 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/svg_clipper.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Splash2ViewBody extends StatelessWidget {
+class Splash1ViewBody extends StatelessWidget {
   final double currentPage;
-  const Splash2ViewBody({super.key, required this.currentPage});
+  const Splash1ViewBody({super.key, required this.currentPage});
 
   @override
   Widget build(BuildContext context) {
@@ -27,26 +27,50 @@ class Splash2ViewBody extends StatelessWidget {
               left: size.width * 0.23,
               right: size.width * 0.23,
               bottom: size.height * 0.5 * 0.04,
-              child: SvgPicture.asset('assets/images/second_splash_logo.svg'),
+              child: SvgPicture.asset('assets/images/first_splash_logo.svg'),
             ),
           ],
         ),
         const SizedBox(height: 60),
-        Text(
-          "ابحث وتسوق",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: Colors.black87,
-            fontFamily: GoogleFonts.cairo().fontFamily,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text.rich(
+              TextSpan(
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: GoogleFonts.cairo().fontFamily,
+                ),
+                children: [
+                  TextSpan(
+                    text: "Fruit",
+                    style: TextStyle(color: Colors.green[900]),
+                  ),
+                  TextSpan(
+                    text: "HUB",
+                    style: TextStyle(color: Colors.yellow[900]),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              " مرحبًا بك في",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                color: Colors.black87,
+                fontFamily: GoogleFonts.cairo().fontFamily,
+              ),
+            ),
+          ],
         ),
-        const SizedBox(height: 64),
+        SizedBox(height: size.height * 0.05),
         SizedBox(
           width: 301,
           height: 66,
           child: Text(
-            "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على\n التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة\n المثالية",
+            "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف \nمجموعتنا الواسعة من الفواكه الطازجة الممتازة\n واحصل على أفضل العروض والجودة العالية.",
             maxLines: 3,
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.center,
@@ -58,7 +82,7 @@ class Splash2ViewBody extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
         DotsIndicator(
           dotsCount: 2,
           position: currentPage,
@@ -68,26 +92,6 @@ class Splash2ViewBody extends StatelessWidget {
             size: const Size(12, 12),
             activeSize: const Size(12, 12),
             spacing: const EdgeInsets.symmetric(horizontal: 4),
-          ),
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green[900],
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            minimumSize: const Size(343, 50),
-          ),
-          child: Text(
-            "ابدأ الان",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-              fontFamily: GoogleFonts.cairo().fontFamily,
-            ),
           ),
         ),
       ],
