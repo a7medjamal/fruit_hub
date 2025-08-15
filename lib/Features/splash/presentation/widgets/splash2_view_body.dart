@@ -31,7 +31,7 @@ class Splash2ViewBody extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 60),
+        const SizedBox(height: 64),
         Text(
           "ابحث وتسوق",
           style: TextStyle(
@@ -41,10 +41,10 @@ class Splash2ViewBody extends StatelessWidget {
             fontFamily: GoogleFonts.cairo().fontFamily,
           ),
         ),
-        const SizedBox(height: 64),
+        const SizedBox(height: 24),
         SizedBox(
           width: 301,
-          height: 66,
+          height: 67,
           child: Text(
             "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على\n التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة\n المثالية",
             maxLines: 3,
@@ -64,13 +64,13 @@ class Splash2ViewBody extends StatelessWidget {
           position: currentPage,
           decorator: DotsDecorator(
             activeColor: Colors.green[900],
-            color: Colors.green[500]!,
+            color: Colors.green[900]!,
             size: const Size(12, 12),
             activeSize: const Size(12, 12),
             spacing: const EdgeInsets.symmetric(horizontal: 4),
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 29),
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
