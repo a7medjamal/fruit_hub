@@ -3,6 +3,8 @@ import 'package:fruit_hub/Features/splash/presentation/widgets/custom_background
 import 'package:fruit_hub/Features/splash/presentation/widgets/custom_dots_indicator.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/custom_elevated_button.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/splash_text_widget.dart';
+import 'package:fruit_hub/core/utils/app_router.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Splash2ViewBody extends StatelessWidget {
@@ -44,7 +46,9 @@ class Splash2ViewBody extends StatelessWidget {
         const SizedBox(height: 29),
         CustomElevatedButton(
           text: 'ابدأ الان',
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(AppRouter.kRegisterView);
+          },
           backgroundColor: Colors.green[900],
         ),
       ],
