@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/Features/auth/presentation/widgets/custom_check_box.dart';
 import 'package:fruit_hub/Features/auth/presentation/widgets/custom_text_field.dart';
 import 'package:fruit_hub/Features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/custom_elevated_button.dart';
+import 'package:fruit_hub/core/helpers/show_message.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});
@@ -13,6 +15,31 @@ class RegisterViewBody extends StatefulWidget {
 
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   bool isChecked = false;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void _onRegister(BuildContext context) {
+    if (nameController.text.trim().isEmpty ||
+        emailController.text.trim().isEmpty ||
+        passwordController.text.trim().isEmpty) {
+      showMessage(context, 'يرجى ملء جميع الحقول');
+      return;
+    }
+    if (!isChecked) {
+      showMessage(context, 'يرجى قبول الشروط والأحكام');
+      return;
+    }
+    showMessage(context, 'تم إنشاء الحساب بنجاح');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +50,31 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           child: Column(
             children: [
               const SizedBox(height: 22),
-              const CustomTextField(hintText: 'الاسم كامل'),
+              CustomTextField(
+                controller: nameController,
+                hintText: 'الاسم كامل',
+              ),
               const SizedBox(height: 16),
-              const CustomTextField(hintText: 'البريد الإلكتروني'),
+              CustomTextField(
+                controller: emailController,
+                hintText: 'البريد الإلكتروني',
+              ),
               const SizedBox(height: 16),
-              const CustomTextField(hintText: 'كلمة المرور', isPassword: true),
+              CustomTextField(
+                controller: passwordController,
+                hintText: 'كلمة المرور',
+                isPassword: true,
+              ),
               const SizedBox(height: 16),
               Row(
                 children: [
-                  Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoCheckbox(
-                      activeColor: Colors.green[900],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomCheckbox(
                       value: isChecked,
-                      side: BorderSide(color: Colors.green[900]!, width: 0.5),
+                      size: 22,
+                      activeColor: Colors.green[900]!,
+                      borderColor: Colors.green[900]!,
                       onChanged: (value) {
                         setState(() {
                           isChecked = value ?? false;
@@ -44,7 +82,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       },
                     ),
                   ),
-                  const SizedBox(width: 5),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: CustomTextWidget(
                       text: 'من خلال انشاء حساب فإنك توافق على ',
@@ -55,7 +93,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               ),
               const SizedBox(height: 16),
               CustomElevatedButton(
-                onPressed: () {},
+                onPressed: () => _onRegister(context),
                 backgroundColor: Colors.green[900],
                 text: 'إنشاء حساب جديد',
               ),

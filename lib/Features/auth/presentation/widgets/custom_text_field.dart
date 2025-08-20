@@ -2,10 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({super.key, required this.hintText, this.isPassword});
+  const CustomTextField({
+    super.key,
+    required this.hintText,
+    this.isPassword,
+    this.controller,
+  });
 
   final String hintText;
   final bool? isPassword;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -23,6 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       obscureText: obscureText,
       cursorColor: Colors.black,
       textDirection: TextDirection.rtl,
