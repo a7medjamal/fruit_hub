@@ -1,3 +1,4 @@
+import 'package:fruit_hub/Features/auth/presentation/views/forget_password_view.dart';
 import 'package:fruit_hub/Features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hub/Features/auth/presentation/views/register_view.dart';
 import 'package:fruit_hub/Features/onboarding/presentation/views/onboarding_view.dart';
@@ -10,6 +11,7 @@ abstract class AppRouter {
   static final String kSplash2View = '/onboarding2';
   static final String kRegisterView = '/register';
   static final String kLoginView = '/login';
+  static final String kForgetPasswordView = '/forget-password';
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const OnboardingView()),
@@ -22,6 +24,7 @@ abstract class AppRouter {
         builder: (context, state) => const RegisterView(),
       ),
       GoRoute(path: kLoginView, builder: (context, state) => const LoginView()),
+      GoRoute(path: kForgetPasswordView, builder: (context, state) => const ForgetPasswordView()),
     ],
   );
 }
