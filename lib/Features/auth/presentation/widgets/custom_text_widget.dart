@@ -5,12 +5,16 @@ class CustomTextWidget extends StatelessWidget {
   final String text;
   final String clickableText;
   final VoidCallback? onTap;
+  final Color clickableTextColor;
+  final double textFontSize;
 
   const CustomTextWidget({
     super.key,
     required this.text,
     required this.clickableText,
     this.onTap,
+    required this.clickableTextColor,
+    required this.textFontSize,
   });
 
   @override
@@ -19,28 +23,22 @@ class CustomTextWidget extends StatelessWidget {
       textDirection: TextDirection.rtl,
       text: TextSpan(
         text: text,
-        style: const TextStyle(
+        style: TextStyle(
           color: Color(0xff949D9E),
-          fontSize: 13,
+          fontSize: textFontSize,
           fontWeight: FontWeight.w700,
           fontFamily: 'Cairo',
         ),
         children: [
           TextSpan(
             text: clickableText,
-            style: const TextStyle(
-              fontSize: 13,
-              color: Colors.green,
+            style: TextStyle(
+              fontSize: textFontSize,
+              color: clickableTextColor,
               fontWeight: FontWeight.w700,
               fontFamily: 'Cairo',
-              decoration: TextDecoration.underline, 
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap =
-                  onTap ??
-                  () {
-                    debugPrint("Clickable text tapped");
-                  },
+            recognizer: TapGestureRecognizer()..onTap = onTap ?? () {},
           ),
         ],
       ),

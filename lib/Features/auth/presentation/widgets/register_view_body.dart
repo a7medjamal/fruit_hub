@@ -5,6 +5,8 @@ import 'package:fruit_hub/Features/auth/presentation/widgets/custom_text_field.d
 import 'package:fruit_hub/Features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/custom_elevated_button.dart';
 import 'package:fruit_hub/core/helpers/show_message.dart';
+import 'package:fruit_hub/core/utils/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});
@@ -39,6 +41,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       return;
     }
     showMessage(context, 'تم إنشاء الحساب بنجاح');
+    GoRouter.of(context).push(AppRouter.kLoginView);
   }
 
   @override
@@ -87,6 +90,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     child: CustomTextWidget(
                       text: 'من خلال انشاء حساب فإنك توافق على ',
                       clickableText: 'الشروط والاحكام الخاصة بنا',
+                      clickableTextColor: Colors.green[500]!,
+                      textFontSize: 13,
                     ),
                   ),
                 ],
@@ -100,7 +105,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               const SizedBox(height: 16),
               CustomTextWidget(
                 text: 'لديك حساب بالفعل؟ ',
-                clickableText: 'تسجيل الدخول',
+                clickableText: 'تسجيل دخول',
+                clickableTextColor: Colors.green[900]!,
+                textFontSize: 16,
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kLoginView);
+                },
               ),
             ],
           ),
