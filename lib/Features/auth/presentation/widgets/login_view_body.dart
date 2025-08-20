@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hub/Features/auth/presentation/widgets/custom_text_field.dart';
-import 'package:fruit_hub/Features/auth/presentation/widgets/custom_text_widget.dart';
+import 'package:fruit_hub/Features/auth/presentation/widgets/custom_divider_row.dart';
+import 'package:fruit_hub/Features/auth/presentation/widgets/custom_google_login_button.dart';
+import 'package:fruit_hub/Features/auth/presentation/widgets/email_password_text_fields.dart';
+import 'package:fruit_hub/Features/auth/presentation/widgets/forget_password_row.dart';
+import 'package:fruit_hub/Features/auth/presentation/widgets/register_redirect_text_button.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/custom_elevated_button.dart';
 import 'package:fruit_hub/core/helpers/show_message.dart';
 
@@ -41,29 +44,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           child: Column(
             children: [
               const SizedBox(height: 22),
-              const SizedBox(height: 16),
-              CustomTextField(
-                controller: emailController,
-                hintText: 'البريد الإلكتروني',
+              EmailPasswordTextFields(
+                emailController: emailController,
+                passwordController: passwordController,
               ),
               const SizedBox(height: 16),
-              CustomTextField(
-                controller: passwordController,
-                hintText: 'كلمة المرور',
-                isPassword: true,
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomTextWidget(
-                    text: '',
-                    clickableText: 'نسيت كلمة المرور؟',
-                    clickableTextColor: Colors.green[500]!,
-                    textFontSize: 13,
-                  ),
-                ],
-              ),
+              ForgetPasswordRow(),
               const SizedBox(height: 37),
               CustomElevatedButton(
                 onPressed: () => _onLogin(context),
@@ -71,22 +57,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 text: 'تسجيل دخول',
               ),
               const SizedBox(height: 33),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomTextWidget(
-                    text: 'لا تمتلك حساب؟',
-                    clickableText: ' قم بانشاء حساب',
-                    clickableTextColor: Colors.green[900]!,
-                    textFontSize: 16,
-                  ),
-                ],
-              ),
+              RegisterRedirectTextButton(),
               const SizedBox(height: 37),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                ],
+              CustomDividerRow(),
+              const SizedBox(height: 16),
+              CustomGoogleLoginButton(
+                onPressed: () {
+                  showMessage(context, 'تم تسجيل الدخول باستخدام جوجل');
+                },
               ),
             ],
           ),

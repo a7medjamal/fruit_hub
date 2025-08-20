@@ -6,6 +6,7 @@ class CustomTextWidget extends StatelessWidget {
   final String clickableText;
   final VoidCallback? onTap;
   final Color clickableTextColor;
+  final Color? textColor; 
   final double textFontSize;
 
   const CustomTextWidget({
@@ -14,7 +15,8 @@ class CustomTextWidget extends StatelessWidget {
     required this.clickableText,
     this.onTap,
     required this.clickableTextColor,
-    required this.textFontSize,
+    required this.textFontSize, 
+    this.textColor,
   });
 
   @override
@@ -24,7 +26,7 @@ class CustomTextWidget extends StatelessWidget {
       text: TextSpan(
         text: text,
         style: TextStyle(
-          color: Color(0xff949D9E),
+          color: textColor ?? Color(0xff949D9E),
           fontSize: textFontSize,
           fontWeight: FontWeight.w700,
           fontFamily: 'Cairo',
