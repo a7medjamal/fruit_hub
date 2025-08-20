@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/Features/splash/presentation/widgets/custom_dot_indicator.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/splash1_view_body.dart';
 import 'package:fruit_hub/Features/splash/presentation/widgets/splash2_view_body.dart';
 
@@ -32,11 +33,26 @@ class _SplashPagerState extends State<SplashPager> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
+      body: Stack(
         children: [
-          Splash1ViewBody(currentPage: _currentPage),
-          Splash2ViewBody(currentPage: _currentPage),
+          PageView(
+            physics: const BouncingScrollPhysics(),
+            controller: _pageController,
+            children: const [Splash1ViewBody(), Splash2ViewBody()],
+          ),
+          Positioned(
+            left: 172,
+            right: 172,
+            bottom: 125,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                2,
+                (index) =>
+                    CustomDotIndicator(isActive: index == _currentPage.round()),
+              ),
+            ),
+          ),
         ],
       ),
     );
