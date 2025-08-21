@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomDotIndicator extends StatelessWidget {
-  const CustomDotIndicator({super.key, required this.isActive});
+  const CustomDotIndicator({super.key, required this.activeColor, required this.inactiveColor, required this.isActive});
 
   final bool isActive;
+  final Color activeColor;
+  final Color inactiveColor;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class CustomDotIndicator extends StatelessWidget {
       height: 10,
       width: 10,
       decoration: BoxDecoration(
-        color: isActive ? Colors.green[900] : Colors.green[500],
+        color: isActive ? activeColor : inactiveColor,
         borderRadius: BorderRadius.circular(5),
       ),
     );
