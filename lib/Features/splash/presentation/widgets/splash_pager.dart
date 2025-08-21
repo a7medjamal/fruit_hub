@@ -48,8 +48,13 @@ class _SplashPagerState extends State<SplashPager> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 2,
-                (index) =>
-                    CustomDotIndicator(isActive: index == _currentPage.round()),
+                (index) => CustomDotIndicator(
+                  isActive: index == _currentPage.round(),
+                  activeColor: Colors.green[900]!,
+                  inactiveColor: index == 0
+                      ? Colors.green[900]!
+                      : Colors.green[500]!,
+                ),
               ),
             ),
           ),
