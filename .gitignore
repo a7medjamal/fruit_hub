@@ -33,6 +33,9 @@ migrate_working_dir/
 .pub/
 /build/
 .env
+**/generated_plugin_registrant.*
+**/generated_plugins.cmake
+**/GeneratedPluginRegistrant.swift
 
 # Symbolication related
 app.*.symbols
@@ -45,3 +48,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 android/app/google-services.json
+macos/Flutter/GeneratedPluginRegistrant.swift
